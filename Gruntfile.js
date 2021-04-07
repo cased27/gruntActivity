@@ -2,16 +2,27 @@ module.exports = function (grunt) {
     grunt.initConfig({
         name: 'class',
         watch: {
-            files: ['*.js', '*.css'],
+            files: ['**.js', '**.css'],
             task: ['updated']
         },
         uglify: {
             build: {
-                src: ['index.js', 'logger.js'],
+                src: ['src/index.js', 'src/logger.js'],
                 dest: 'dist/bundle.js'
+            }
+        },
+        babel: {
+            options: {
+                presets: ['env']
+            },
+            build: {
+                src: ['src/index.js', 'src/logger.js'],
+                dest: ['build/index.js', 'build/index.js']
             }
         }
     });
+
+   
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -22,4 +33,5 @@ module.exports = function (grunt) {
     grunt.registerTask('default', () => {
         grunt.log.writeln(`Hello,${grunt.config.get('name')}!`)
     });
+
 };
