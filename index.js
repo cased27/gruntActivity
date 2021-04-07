@@ -1,4 +1,4 @@
-var count = 0;
+let count = 0;
 
 document.getElementById('tomato').addEventListener('click', function() {
   count++;
